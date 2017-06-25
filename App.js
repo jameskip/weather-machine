@@ -54,16 +54,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingBottom: '0%'
+    paddingBottom: '0%',
   },
   picker: {
-    paddingTop: '30%'
+    paddingTop: '30%',
   },
   highNlow: {
     fontSize: 20,
   },
   summary: {
     fontSize: 18,
-    padding: 10
-  }
+    padding: 10,
+  },
 });
