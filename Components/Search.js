@@ -1,19 +1,34 @@
 import React from 'react';
-import { ActivityIndicator, StyleSheet, Text, View, DatePickerIOS } from 'react-native';
+import { Text, View, StyleSheet, DatePickerIOS } from 'react-native';
 
 export default class Search extends React.Component {
+
   constructor(props) {
     super(props);
-    this.setState = {
-
+    this.state = {
+      date: new Date()
     }
+  }
+
+  onDateChange (date) {
+    this.setState({ date: date })
   }
 
   render () {
     return (
-      <view>
-        <DatePickerIOS />
-      </view>
+      <View>
+        <DatePickerIOS date={this.state.date}
+          onDateChange={(date) => this.onDateChange(date)}
+          mode='date'
+          confirmBtnText="Confirm"
+        />
+
+        <Text>
+          {this.state.date.toString()}
+        </Text>
+
+      </View>
     )
   }
+
 };

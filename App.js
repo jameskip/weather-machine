@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import { AppRegistry, ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 import Search from './Components/Search';
 
@@ -29,7 +29,7 @@ export default class App extends React.Component {
   render() {
     if (this.state.isLoading) {
       return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
+        <View style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
           <ActivityIndicator size="large" />
         </View>
       )
@@ -39,6 +39,9 @@ export default class App extends React.Component {
         <Text>Summary: {this.state.summary}{"\n"}</Text>
         <Text>High: {this.state.maxTemp}</Text>
         <Text>Low: {this.state.minTemp}</Text>
+        <View style={styles.picker}>
+          <Search />
+        </View>
       </View>
     );
   }
@@ -50,5 +53,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingBottom: '0%'
   },
+  picker: {
+    paddingTop: '30%'
+  }
 });
