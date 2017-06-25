@@ -1,6 +1,8 @@
 import React from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
+import Search from './Components/Search';
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
