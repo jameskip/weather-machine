@@ -15,7 +15,7 @@ export default class App extends React.Component {
     return fetch('https://api.darksky.net/forecast/254ee42b02caecd90d8cb312d885b884/42.3601,-71.0589,409467600?exclude=currently,hourly,flags')
     .then((response) => response.json())
     .then((resJson) => {
-      console.log(resJson);
+      console.log("Response from API: ///////======//////////", resJson);
       this.setState({
         maxTemp: resJson.daily.data[0].temperatureMax,
         minTemp: resJson.daily.data[0].temperatureMin,
@@ -36,12 +36,13 @@ export default class App extends React.Component {
     }
     return (
       <View style={styles.container}>
-        <Text>Summary: {this.state.summary}{"\n"}</Text>
-        <Text>High: {this.state.maxTemp}</Text>
-        <Text>Low: {this.state.minTemp}</Text>
+        <Text style={styles.summary}>Summary: {this.state.summary}{"\n\n"}</Text>
+        <Text style={styles.highNlow}>High: {this.state.maxTemp}</Text>
+        <Text style={styles.highNlow}>Low: {this.state.minTemp}</Text>
         <View style={styles.picker}>
           <Search />
         </View>
+        {console.log(this.state)}
       </View>
     );
   }
@@ -57,5 +58,12 @@ const styles = StyleSheet.create({
   },
   picker: {
     paddingTop: '30%'
+  },
+  highNlow: {
+    fontSize: 20,
+  },
+  summary: {
+    fontSize: 18,
+    padding: 10
   }
 });
