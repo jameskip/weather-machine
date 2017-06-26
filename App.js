@@ -8,21 +8,17 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       isLoading: true,
-
     }
   }
 
   componentDidMount() {
-    console.log(this.state)
     return fetch('https://api.darksky.net/forecast/254ee42b02caecd90d8cb312d885b884/42.3601,-71.0589,409467600?exclude=currently,hourly,flags')
     .then((response) => response.json())
     .then((resJson) => {
-      console.log(resJson)
       this.setState({
         maxTemp: resJson.daily.data[0].temperatureMax,
         minTemp: resJson.daily.data[0].temperatureMin,
         summary: resJson.daily.data[0].summary,
-        cityName: "City",
         isLoading: false,
       })
     })

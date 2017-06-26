@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, DatePickerIOS, TextInput, Button, TouchableHighlight } from 'react-native';
-import timestamp from 'unix-timestamp'
+import timestamp from 'unix-timestamp';
 
 export default class Search extends React.Component {
 
@@ -8,27 +8,38 @@ export default class Search extends React.Component {
     super(props);
     this.state = {
       date: new Date(),
-      text: 'City...'
+      city: 'Dallas'
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log("I am alive!!!!!!", nextProps)
+  onDateChange(date) {
+    let time = timestamp.fromDate(date)
+    this.setState({ date: date, time: time })
   }
 
-  onDateChange (date) {
-    this.setState({ date: date })
-  }
-
-  onCityChange (city) {
+  onCityChange(city) {
     this.setState({ city: city })
   }
 
-  onSubmit () {
+  onSubmit() {
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.city}&key=AIzaSyBy3FqMbRxCrDHl3DBwM4LrHLaMaPduBMc`)
       .then((response) => response.json())
       .then((responseJson) => {
-        console.log(responseJson, this.state)
+        const lat = responseJson.results[0].geometry.location.lat;
+        const lng = responseJson.results[0].geometry.location.lng;
+        this.setState({ lat: lat, lng: lng})
+      })
+      .then(() => {
+        return fetch(`https://api.darksky.net/forecast/254ee42b02caecd90d8cb312d885b884/${this.state.lat},${this.state.lng},${this.state.time}?exclude=currently,hourly,flags`)
+        .then(response => response.json())
+        .then((resJson) => {
+          this.setState({
+            maxTemp: resJson.daily.data[0].temperatureMax,
+            minTemp: resJson.daily.data[0].temperatureMin,
+            summary: resJson.daily.data[0].summary,
+            isLoading: false,
+          })
+        })
       })
       .catch((error) => console.error(error))
   }
