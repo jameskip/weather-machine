@@ -28,7 +28,6 @@ export default class Search extends React.Component {
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.city}&key=AIzaSyBy3FqMbRxCrDHl3DBwM4LrHLaMaPduBMc`)
       .then((response) => response.json())
       .then((responseJson) => {
-        //
         console.log(responseJson, this.state)
       })
       .catch((error) => console.error(error))
