@@ -10,22 +10,23 @@ export default class App extends React.Component {
     this.state = {
       isLoading: true,
       date: new Date(),
-      city: 'Dallas'
+      city: 'Austin',
+      time: Math.round((new Date()).getTime() / 1000)
     }
   }
 
   componentDidMount() {
-    return fetch('https://api.darksky.net/forecast/254ee42b02caecd90d8cb312d885b884/42.3601,-71.0589,409467600?exclude=currently,hourly,flags')
-    .then((response) => response.json())
-    .then((resJson) => {
-      this.setState({
-        maxTemp: resJson.daily.data[0].temperatureMax,
-        minTemp: resJson.daily.data[0].temperatureMin,
-        summary: resJson.daily.data[0].summary,
-        isLoading: false,
+    fetch(`https://api.darksky.net/forecast/254ee42b02caecd90d8cb312d885b884/30.2672,97.7431,${this.state.time}?exclude=currently,hourly,flags`)
+      .then((response) => response.json())
+      .then((resJson) => {
+        this.setState({
+          maxTemp: resJson.daily.data[0].temperatureMax,
+          minTemp: resJson.daily.data[0].temperatureMin,
+          summary: resJson.daily.data[0].summary,
+          isLoading: false,
+        })
       })
-    })
-    .catch(error => console.error(error))
+      .catch(error => console.error(error))
   }
 
   onDateChange(date) {
@@ -63,7 +64,7 @@ export default class App extends React.Component {
   render() {
     if (this.state.isLoading) {
       return (
-        <View style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
+        <View style={{ alignItems: 'center', justifyContent: 'space-around', flexDirection: 'row'}}>
           <ActivityIndicator size="large" />
         </View>
       )

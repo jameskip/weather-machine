@@ -17,18 +17,13 @@ export default class Search extends React.Component {
         <TextInput
           style={styles.input}
           onChangeText={this.props.onCityChange}
-          placeholder="   City"
+          placeholder="Austin"
         />
         <DatePickerIOS date={this.props.date}
           onDateChange={this.props.onDateChange}
           mode='date'
           confirmBtnText="Confirm"
         />
-        <Text>
-          {/* {this.state.date.toString()} */}
-        </Text>
-        {console.log("this is from search: ", this.props)}
-
         <TouchableHighlight
           style={{backgroundColor: 'rgb(0, 52, 74)'}}
           onPress={this.props.onSubmit}>
@@ -55,5 +50,6 @@ const styles = StyleSheet.create({
     height: 40,
     borderColor: 'gray',
     borderWidth: 2,
+    textAlign: 'center'
   },
 });
