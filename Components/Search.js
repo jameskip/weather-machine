@@ -26,7 +26,8 @@ export default class Search extends React.Component {
         />
         <TouchableHighlight
           style={{backgroundColor: 'rgb(0, 52, 74)'}}
-          onPress={this.props.onSubmit}>
+          onPress={this.props.onSubmit}
+        >
           <View>
             <Text style={styles.button}>Submit</Text>
           </View>
@@ -44,12 +45,12 @@ const styles = StyleSheet.create({
     textAlignVertical: 'auto',
     color: 'white',
     borderColor: 'rgb(119, 216, 230)',
-    borderWidth: 2
+    borderWidth: 2,
   },
   input: {
     height: 40,
     borderColor: 'gray',
     borderWidth: 2,
-    textAlign: 'center'
+    textAlign: 'center',
   },
 });

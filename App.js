@@ -11,8 +11,8 @@ export default class App extends React.Component {
       isLoading: true,
       date: new Date(),
       city: 'Austin',
-      time: Math.round((new Date()).getTime() / 1000)
-    }
+      time: Math.round((new Date()).getTime() / 1000),
+    };
   }
 
   componentDidMount() {
@@ -55,10 +55,10 @@ export default class App extends React.Component {
             minTemp: resJson.daily.data[0].temperatureMin,
             summary: resJson.daily.data[0].summary,
             isLoading: false,
-          })
+          });
         })
       })
-      .catch((error) => console.error(error))
+      .catch((error) => console.error(error));
   }
 
   render() {
@@ -67,7 +67,7 @@ export default class App extends React.Component {
         <View style={{ alignItems: 'center', justifyContent: 'space-around', flexDirection: 'row'}}>
           <ActivityIndicator size="large" />
         </View>
-      )
+      );
     }
     return (
       <View style={styles.container}>
