@@ -76,7 +76,12 @@ export default class App extends React.Component {
         <Text style={styles.highNlow}>High: {this.state.maxTemp}</Text>
         <Text style={styles.highNlow}>Low: {this.state.minTemp}</Text>
         <View style={styles.picker}>
-          <Search onSubmit={this.onSubmit.bind(this)} onCityChange={this.onCityChange.bind(this)} onDateChange={this.onDateChange.bind(this)} date={this.state.date} />
+          <Search
+            onSubmit={this.onSubmit.bind(this)}
+            onCityChange={this.onCityChange.bind(this)}
+            onDateChange={this.onDateChange.bind(this)}
+            date={this.state.date}
+          />
         </View>
       </View>
     );
