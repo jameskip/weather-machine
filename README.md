@@ -1,4 +1,4 @@
-<img width="10%" src="https://github.com/jameskip/weather-machine/blob/master/IMG_0600.PNG?raw=true" />
+<img width="30%" src="https://github.com/jameskip/weather-machine/blob/master/IMG_0600.PNG?raw=true" />
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
